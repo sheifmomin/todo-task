@@ -1,5 +1,7 @@
 {
   "name": "todo-tasks",
-  "integrations": {},
+  "integrations": {
+    "capacitor": {}
+  },
   "type": "angular"
 }

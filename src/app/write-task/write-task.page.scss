@@ -1,0 +1,30 @@
+ion-icon {
+	font-size: 15pt;
+	padding: 0 10px;
+}
+
+.label {
+	padding-right: 5px;
+}
+
+.label-tags {
+	display: flex;
+    flex-wrap: wrap;
+}
+
+@media only screen and (min-width: 1140px) {
+	ion-card {
+		margin: 2rem 30%;
+	}
+	ion-button ion-icon {
+		display: none;
+	}
+}
+
+@media only screen and (max-width: 1140px) {
+	ion-button ion-label {
+		display: none;
+	}
+	
+}
+

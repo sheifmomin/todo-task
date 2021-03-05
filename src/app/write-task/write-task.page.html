@@ -1,0 +1,57 @@
+<ion-header>
+  <ion-grid>
+    <ion-row>
+      <div [routerLink]="['/list']" class="ion-text-start main-title">
+        <ion-icon color="success" name="checkmark-done-circle-outline"></ion-icon>
+        <ion-label>To Do</ion-label>
+      </div>
+      <ion-col class="ion-text-end">
+        <ion-button [routerLink]="['/list']" color="light">
+          <ion-label>Back</ion-label>
+          <ion-icon name="arrow-back-outline"></ion-icon>
+        </ion-button>
+        <ion-button *ngIf="!newTask" [routerLink]="['/list']" (click)="deleteTask()" color="danger">
+          <ion-label>Delete</ion-label>
+          <ion-icon name="trash-outline"></ion-icon>
+        </ion-button>
+        <ion-button (click)="addTask()" color="success">
+          <ion-label>Save</ion-label>
+          <ion-icon name="save-outline"></ion-icon>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-header>
+<ion-content>
+  <ion-card class="ion-padding">
+    <form class="department-form" [formGroup]="addTaskForm">
+      <ion-item>
+        <ion-label color="primary">Task Name*</ion-label>
+        <ion-input formControlName="name"></ion-input>
+      </ion-item>
+      <ion-text *ngIf="submitted && f.name.errors?.required" class="ion-padding-start" color="danger">Required field</ion-text>
+      <ion-item>
+        <ion-label color="primary">Description*</ion-label>
+        <ion-textarea formControlName="description"></ion-textarea>
+      </ion-item>
+      <ion-text *ngIf="submitted && f.description.errors?.required" class="ion-padding-start" color="danger">Required field</ion-text>
+      <ion-item>
+        <ion-label class="label" color="primary">Labels</ion-label>
+        <ion-input class="label-tags" (keyup)="emitKeyEvent($event, 2)" (ionBlur)="createLabelTag()" formControlName="labels">
+          <div *ngFor="let label of labelsList; let i = index">
+            <ion-button (click)="removeLabelTag(i)" [color]="color[i%5]">{{ label }}</ion-button>
+          </div>
+        </ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label color="primary">Due Date</ion-label>
+        <ion-datetime formControlName="date" displayFormat="MM/DD/YYYY"></ion-datetime>
+        <ion-icon name="calendar-outline"></ion-icon>
+      </ion-item>
+      <ion-item>
+        <ion-label color="primary">Notes</ion-label>
+        <ion-textarea formControlName="notes"></ion-textarea>
+      </ion-item>
+    </form>
+  </ion-card>
+</ion-content>

@@ -1,0 +1,63 @@
+<ion-header>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="4" [routerLink]="['/list']" class="ion-text-start main-title">
+        <ion-icon color="success" name="checkmark-done-circle-outline"></ion-icon>
+        <ion-label>To Do</ion-label>
+      </ion-col>
+      <ion-col class="ion-text-end">
+        <ion-button [routerLink]="['/write']" [queryParams]="{ id: currentTask.id }" color="light" tab="write">
+          <ion-label>Edit</ion-label>
+          <ion-icon name="create-outline"></ion-icon>
+        </ion-button>
+        <ion-button [routerLink]="['/list']" color="success" tab="write">
+          <ion-label>Mark as Complete</ion-label>
+          <ion-icon name="checkmark-done-outline"></ion-icon>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-header>
+<ion-content>
+  <div class="task-detail">
+    <ion-card class="ion-padding">
+        <ion-item lines="none">
+          <div>
+            <ion-label color="medium">THUMBNAIL</ion-label>
+            <ion-text></ion-text>
+          </div>
+        </ion-item>
+        <ion-item lines="none">
+          <div>
+            <ion-label color="medium">DESCRIPTION</ion-label>
+            <ion-text>{{ currentTask.description }}</ion-text>
+          </div>
+        </ion-item>
+        <ion-item lines="none">
+          <div>
+            <div>
+              <ion-label color="medium">LABELS</ion-label>
+            </div>
+            <div>
+              <ion-button  *ngFor="let label of currentTask.labels; let i = index;" [color]="color[i]">{{ label }}</ion-button>
+            </div>
+          </div>
+        </ion-item>
+        <ion-item lines="none">
+          <div>
+            <ion-label color="medium">DUE DATE</ion-label>
+            <div>
+              <ion-icon class="date-outline"  name="calendar-outline"></ion-icon>
+              <ion-text>{{ getDateFormatted(currentTask.date) }}</ion-text>
+            </div>
+          </div>
+        </ion-item>
+        <ion-item lines="none">
+          <div>
+            <ion-label color="medium">NOTES</ion-label>
+            <ion-text>{{ currentTask.notes }}</ion-text>
+          </div>
+        </ion-item>
+    </ion-card>
+  </div>
+</ion-content>

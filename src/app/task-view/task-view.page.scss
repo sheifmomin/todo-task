@@ -1,0 +1,36 @@
+ion-card ion-label {
+	padding-bottom: 8px;
+}
+
+.date-outline {
+	padding-right: 6px;
+}
+
+@media only screen and (min-width: 720px) {
+	ion-item > div {
+		padding: 15px;
+	}
+}
+
+@media only screen and (max-width: 720px) {
+	ion-item > div {
+		padding: 15px 0;
+	}
+}
+
+
+@media only screen and (min-width: 1140px) {
+	ion-card {
+		margin: 2rem 30%;
+	}
+
+	ion-button ion-icon {
+		display: none;
+	}
+}
+
+@media only screen and (max-width: 1140px) {
+	ion-button ion-label {
+		display: none;
+	}
+}
